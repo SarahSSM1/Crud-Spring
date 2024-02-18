@@ -31,22 +31,21 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public Optional<Course> update(Long id, Course course) {
+    public Course update(Long id, Course course) {
         return courseRepository.findById(id)
                 .map(recordFound -> {
                     recordFound.setName(course.getName());
                     recordFound.setCategory(course.getCategory());
                     return courseRepository.save(recordFound);
-                });
+                }).orElseThrow(() -> new RecordNotFoundException(id));
     }
     
-    public boolean delete(@PathVariable Long id) {
-        return courseRepository.findById(id)
-                .map(recordFound -> {
-                    courseRepository.deleteById(id);
-                    return true;
-                })
-                .orElse(false);
+    public void delete(@PathVariable Long id) {
+        courseRepository.delete(
+            courseRepository.findById(id)
+            .orElseThrow(() -> new RecordNotFoundException(id)));
+
+
     }
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sarah.crudspring.exception.RecordNotFoundException;
 import com.sarah.crudspring.model.Course;
 import com.sarah.crudspring.service.CourseService;
 
@@ -36,8 +37,6 @@ public class CourseController {
     @GetMapping("/{id}")
     public Course findById(@PathVariable Long id) {
         return courseService.findById(id);
-                // .map(recordFound -> ResponseEntity.ok().body(recordFound))
-                // .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -47,18 +46,13 @@ public class CourseController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Course> update(@PathVariable Long id, @RequestBody Course course) {
-        return courseService.update(id, course)
-                .map(recordFound -> ResponseEntity.ok().body(recordFound))
-                .orElse(ResponseEntity.notFound().build());
+    public Course update(@PathVariable Long id, @RequestBody Course course) {
+        return courseService.update(id, course);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable Long id) {
-        if (courseService.delete(id)){
-            return ResponseEntity.noContent().build();
-        }    
-        return ResponseEntity.notFound().build();
-
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+       courseService.delete(id);
     }
 }
