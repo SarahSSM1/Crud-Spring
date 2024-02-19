@@ -1,8 +1,11 @@
 {
     "cSpell.words": [
         "crudspring",
+        "dtos",
         "encontrado",
-        "Registro"
+        "mudar",
+        "Registro",
+        "tabela"
     ],
     "java.compile.nullAnalysis.mode": "automatic"
 }
