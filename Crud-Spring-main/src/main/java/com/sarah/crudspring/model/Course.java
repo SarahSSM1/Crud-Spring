@@ -1,8 +1,11 @@
 package com.sarah.crudspring.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
- 
+import com.sarah.crudspring.enums.Category;
+import com.sarah.crudspring.enums.converters.CategoryConverter;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +32,8 @@ public class Course {
     // @Size(max = 10)
     // @Pattern(regexp = "Back-end | Front-end")
     @Column(length = 10, nullable = false)
-    private String category;
+    @Convert(converter = CategoryConverter.class)
+    private Category category;
 
     
 }
