@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.sarah.crudspring.model.Course;
+import com.sarah.crudspring.model.Lesson;
 import com.sarah.crudspring.repository.CourseRepository;
 
 
@@ -20,9 +21,17 @@ public class CrudSpringApplication {
 	CommandLineRunner initDatabase(CourseRepository courseRepository) {
 		return args -> {
 			courseRepository.deleteAll();
+
 			Course c = new Course();
 			c.setName("Angular com Spring");
 			c.setCategory("Front-end");
+
+			Lesson l = new Lesson();
+			l.setName("Introdução");
+			l.setYoutubeUrl("watch?v=1");
+			l.setCourse(c);
+			c.getLessons().add(l);
+
 			courseRepository.save(c);
 		};
 	}
