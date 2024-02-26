@@ -11,7 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
@@ -30,7 +29,6 @@ public class Course {
     @Column(length = 10, nullable = false)
     private String category;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course") //orphanRemoval é usada para remover uma entidade filha que não é  refeernciada pelofquando uma entidade filha não é referenciada pela entidade pai, ela será considerada "órfã" e removida do banco de dados.
-    // @JoinColumn(name = "course_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course") //orphanRemoval é usada para remover uma entidade filha que não é referenciada pela entidade pai.
     private List<Lesson> lessons = new ArrayList<>();
 }

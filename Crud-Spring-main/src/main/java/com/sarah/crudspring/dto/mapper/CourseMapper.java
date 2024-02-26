@@ -8,7 +8,8 @@ import com.sarah.crudspring.model.Course;
 public class CourseMapper {
 
     public CourseDTO toDTO(Course course){
-        return new CourseDTO(course.getId(), course.getName(), course.getCategory());
+        return new CourseDTO(course.getId(), course.getName(), course.getCategory(), 
+        course.getLessons());
     }
 
     public Course toEntity(CourseDTO courseDTO) {
