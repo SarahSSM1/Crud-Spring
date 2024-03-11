@@ -25,7 +25,7 @@ public class CrudSpringApplication {
 			Course c = new Course();
 			c.setName("Angular com Spring");
 			c.setCategory("Front-end");
-//ddcdcdcdcdc//
+
 			Lesson l = new Lesson();
 			l.setName("Introdução");
 			l.setYoutubeUrl("watch?v=1");
