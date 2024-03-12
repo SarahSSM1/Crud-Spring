@@ -32,3 +32,6 @@ public class Course {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course") //orphanRemoval é usada para remover uma entidade filha que não é referenciada pela entidade pai.
     private List<Lesson> lessons = new ArrayList<>();
 }
+
+
+//mecanimais
