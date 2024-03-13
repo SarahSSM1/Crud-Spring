@@ -12,10 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.Data;
 
 
-@Data
 @Entity
 public class Course {
     @Id
@@ -31,6 +29,40 @@ public class Course {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course") //orphanRemoval é usada para remover uma entidade filha que não é referenciada pela entidade pai.
     private List<Lesson> lessons = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
+    }
+
+    
 }
 
 
