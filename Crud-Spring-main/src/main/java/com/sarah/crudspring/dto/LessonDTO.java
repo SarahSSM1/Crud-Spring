@@ -1,4 +1,4 @@
-package com.sarah.crudspring.dto.mapper;
+package com.sarah.crudspring.dto;
 
 public record LessonDTO(
     Long id, 

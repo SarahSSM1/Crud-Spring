@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.sarah.crudspring.dto.CourseDTO;
+import com.sarah.crudspring.dto.LessonDTO;
 import com.sarah.crudspring.model.Course;
 import com.sarah.crudspring.model.Lesson;
 
