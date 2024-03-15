@@ -1,6 +1,5 @@
 package com.sarah.crudspring.controller;
 
-import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sarah.crudspring.dto.CourseDTO;
+import com.sarah.crudspring.dto.CoursePageDTO;
 import com.sarah.crudspring.service.CourseService;
+
 
 // @Validated
 @RestController
@@ -28,9 +30,14 @@ public class CourseController {
     }
 
     @GetMapping
-    public @RequestMapping List<CourseDTO> list() {
-        return courseService.list();
+    public @RequestMapping CoursePageDTO list( int page,  int pageSize) {
+        return courseService.list(page, pageSize);
     }
+
+    // @GetMapping
+    // public @RequestMapping List<CourseDTO> list() {
+    //     return courseService.list();
+    // }
 
     @GetMapping("/{id}")
     public CourseDTO findById(@PathVariable Long id) {
